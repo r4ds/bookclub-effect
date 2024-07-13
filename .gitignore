@@ -5,8 +5,8 @@
 .DS_Store
 _book
 _bookdown_files
-bookclub-{{{book_abbr}}}.Rmd
-bookclub-{{{book_abbr}}}.knit.md
-bookclub-{{{book_abbr}}}_files
+bookclub-effect.Rmd
+bookclub-effect.knit.md
+bookclub-effect_files
 libs
 *.html
