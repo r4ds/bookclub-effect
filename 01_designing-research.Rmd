@@ -2,12 +2,60 @@
 
 **Learning objectives:**
 
-- THESE ARE NICE TO HAVE BUT NOT ABSOLUTELY NECESSARY
+- Describe what a good research question entails
+- Discuss research question types
+- Explain why research needs a design
+- Explain importance of a good research question
 
-## SLIDE 1 {-}
 
-- ADD SLIDES AS SECTIONS (`##`).
-- TRY TO KEEP THEM RELATIVELY SLIDE-LIKE; THESE ARE NOTES, NOT THE BOOK ITSELF.
+## Research Questions {-}
+
+- Section 1.1, p.3-5
+- A question that you plan to answer
+- Contributes to improved understanding "how the world works"
+ 
+
+1. Well-Defined
+2. Answerable
+3. Understandable
+
+ 
+## Empirical Research {-}
+- Section 1.2 p.4-5
+- Any research that uses structured observations from the real world to attempt to answer questions.
+- Quantitative empirical research uses quantitative measurements (numbers, usually). 
+- Observations rather than reason
+- More data sets, fewer interviews.
+- Measurements hard to to collect precisely or interpret accurately
+- Numbers we have don’t actually answer the research question we have, what can we do?
+- Goal is to collect the right data to answer the question and design reasearch to do this
+
+
+## Why Research needs a design {-}
+
+- Section 1.3 p.5-7 , 
+- Capable of answering the question it's trying to answer
+- Needed to evaluate first pass analysis and what to do instead
+- Nutrition Research as example of lack of design
+  1. Not having research capable to answer question
+  2. Not actually answering the question
+- Leads to inconsistent results which people cannot rely on nor use
+- Could lead to too difficult a question to answer, but its still a takeway
+
+## Book Goals {-}
+
+To Improve Confidence in crafting a research project, what kind of data needed, and calculations to perform on data
+
+-First Half:
+1. Ways to build an answerable research question
+2. Think of quantitative empirical research to perform to answer question
+
+-Second Half:
+1. "Toolbox" using observational data
+2. Tools are widely applicable to answer many questions
+
+## Discussion/Practicals {-}
+Questions, Discussions, or Examples to fill in during Book Club Meeting
 
 ## Meeting Videos {-}
 

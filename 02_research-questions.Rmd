@@ -2,12 +2,77 @@
 
 **Learning objectives:**
 
-- THESE ARE NICE TO HAVE BUT NOT ABSOLUTELY NECESSARY
+- Define what a Research Question is
+- Compare Data Mining and Research Questions
+- Determine if a question is good
 
-## SLIDE 1 {-}
+## What is a Research Question? {-}
 
-- ADD SLIDES AS SECTIONS (`##`).
-- TRY TO KEEP THEM RELATIVELY SLIDE-LIKE; THESE ARE NOTES, NOT THE BOOK ITSELF.
+- Section 2.1 p. 9-12, Section 2.3 p. 15-16
+- When answered, will improve understanding of how the world works.
+- There exists data when found results in believable answer
+- Can be Answerable with evidence: Avoid ambiguous questions such as "best"
+- It should inform theory: answer something broader than itself
+
+- Theory
+  - Tells us why
+  - May be True or False - but explains why we might see outcomes
+  
+- Good Question takes us from Theory to Hypothesis
+  - When answered improves ability to explain why
+  - If this is how the world works, what should I expect to observe?
+  - Gives us something new about why
+ 
+- Theory -> Research Question or Research Question -> Theory
+
+- Right data for right questions
+
+- Two Checks for Condition for Research Question:
+  1. Could we answer the question?
+  2. Does the question tell us about how the world works?
+  
+- Checks if Research Question Informs Theory:
+  1. Would unexpected result change your understanding of the world?
+  2. If unexpected result doesn't change understanding, then bad question
+  3. If answered, hard to explain away if inconvenient
+
+## Data Mining vs. Research Q's {-}
+- Section 2.2 p.13 - 16
+- Data Mining is good at finding patterns and making predictions under stability
+- Not good at improving understanding nor improve theory main reason are:
+  1. Answers what's in the data , not explaining why. Correlation != Causation
+  2. Does not deal with abstraction, can see observations but not at developing theory
+  3. Results in false positives - observations found in sample but not outside of it. Random relationships eventually occur when testing everything
+  
+- Can lead to Research Questions
+  - Come to data without a theory, noticed interesting data patterns
+  - Confirm it holds up in other data aka replication of data patterns 
+
+
+## Considerations for a good Research Q {-}
+- Section 2.3 p. 15-16, Section 2.4 p. 16-18
+- Sources of Questions:
+  - Curiosity
+  - Theory
+    - If this is what I expect the world to work, what would I expect to see in the world?
+  - Opportunity
+    - What questions would this data allow me to answer?
+ 
+- Research Questions tells us why hypothesis to test
+
+1. Potential Results
+  - If you cant say something interesting from results, Question and Theory not closely linked
+2. Feasibility
+  - Possible vs. Realistically Obtainable Data
+3. Scale
+  - Consider time, resource constraints
+4. Design
+  - Finding a reasonable research design that can answer it
+5. Simplicity
+  - Don't combine multiple determinants into the question to answer
+
+## Discussion/Practicals {-}
+Questions, Discussions, or Examples to fill in during Book Club Meeting
 
 ## Meeting Videos {-}
 

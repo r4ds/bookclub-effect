@@ -9,5 +9,7 @@ Depends:
     R (>= 3.1.0)
 Imports: 
     bookdown,
+    casualdata,
+    causaldata,
     rmarkdown
 Encoding: UTF-8
