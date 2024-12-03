@@ -1,13 +1,16 @@
 # Opening the Toolbox
 
-**Learning objectives:**
+## Methods that we'll be checking out
 
-- THESE ARE NICE TO HAVE BUT NOT ABSOLUTELY NECESSARY
+-   regression as baseline for everything
+-   focus on "template" research designs: same DAG applies to many settings
 
-## SLIDE 1 {-}
+## Structure of upcoming chapters
 
-- ADD SLIDES AS SECTIONS (`##`).
-- TRY TO KEEP THEM RELATIVELY SLIDE-LIKE; THESE ARE NOTES, NOT THE BOOK ITSELF.
+-   How does it work?
+-   How is it performed?
+-   How the pros do it (non-exhaustive): caveats and extensions
+
 
 ## Meeting Videos {-}
 
