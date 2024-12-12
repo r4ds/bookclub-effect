@@ -10,5 +10,7 @@ Depends:
 Imports: 
     bookdown,
     causaldata,
-    rmarkdown
+    rmarkdown,
+    tidyverse,
+    fixest
 Encoding: UTF-8
