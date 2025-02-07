@@ -12,5 +12,8 @@ Imports:
     causaldata,
     rmarkdown,
     tidyverse,
-    fixest
+    fixest,
+    modelsummary,
+    tidyverse,
+    gmm
 Encoding: UTF-8
