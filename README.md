@@ -11,7 +11,7 @@ As we read, we are producing [notes about the book](https://dslc.io/effect).
 
 If you would like to present, please see the sign-up sheet for your cohort (linked below, and pinned in the [#book_club-effect](https://dslcio.slack.com/archives/C0759HPV2G3) channel on Slack)!
 
-- [Cohort 1](https://docs.google.com/spreadsheets/d/1z1sphmX9HZFs8TUz3eMLacOxckwonnWrmsBQqlNY2FI/edit?gid=0?usp=sharing) (started 2024-07-17, facilitated by Keuntae Kim): [Wednesday, 9:00 AM CST/CDT](https://www.timeanddate.com/worldclock/converter.html?iso=20240717T140000&p1=24&p2=1440) | [meeting videos](https://www.youtube.com/playlist?list=PL3x6DOfs2NGj2sMp67G5ihOyiY4d1VVvr)
+- Cohort 1 (started 2024-07-17, ended 2025-02-28): [meeting videos](https://www.youtube.com/playlist?list=PL3x6DOfs2NGj2sMp67G5ihOyiY4d1VVvr)
 
 <hr>
 
