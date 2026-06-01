@@ -12,6 +12,7 @@ As we read, we are producing [notes about the book](https://dslc.io/effect).
 If you would like to present, please see the sign-up sheet for your cohort (linked below, and pinned in the [#book_club-effect](https://dslcio.slack.com/archives/C0759HPV2G3) channel on Slack)!
 
 - Cohort 1 (started 2024-07-17, ended 2025-02-28): [meeting videos](https://www.youtube.com/playlist?list=PL3x6DOfs2NGj2sMp67G5ihOyiY4d1VVvr)
+- Cohort 2 (first meeting 2026-07-02): [Thursdays, 11am America/Chicago]() | [schedule](https://docs.google.com/spreadsheets/d/1JjNvFTJkKFWgGDfnG9TxDN8ezvq1pCwtRXYaBsA9eZ8/edit?usp=sharing) | [meeting videos](https://www.youtube.com/playlist?list=PL3x6DOfs2NGgSfJVlf4x60rHIb00oXJZb)
 
 <hr>
 
