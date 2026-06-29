@@ -76,11 +76,11 @@ If you feel comfortable sharing, in the Zoom chat:
 
 ## Levels of Understanding {-}
 
-1. attend book club meetings
-2. watch the author's [video series](https://nickchk.com/theeffectvideos.html)
-3. present a few meetings
-4. work through the [reading homework](https://github.com/NickCH-K/TheEffectAssignments)
-5. work through the [coding homework](https://github.com/NickCH-K/TheEffectAssignments)
+1. Attend book club meetings
+2. Watch the author's [video series](https://nickchk.com/theeffectvideos.html)
+3. Present a few meetings
+4. Work through the [reading homework](https://github.com/NickCH-K/TheEffectAssignments)
+5. Work through the [coding homework](https://github.com/NickCH-K/TheEffectAssignments)
 
 <!--
 
