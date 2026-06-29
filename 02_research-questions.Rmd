@@ -6,73 +6,63 @@
 - Compare Data Mining and Research Questions
 - Determine if a question is good
 
-## What is a Research Question? {-}
+## What is a Research Question?
 
-- Section 2.1 p. 9-12, Section 2.3 p. 15-16
-- When answered, will improve understanding of how the world works.
-- There exists data when found results in believable answer
-- Can be Answerable with evidence: Avoid ambiguous questions such as "best"
-- It should inform theory: answer something broader than itself
+- **Research Question**
+    - *can be answered*
+    - *improve understanding* of how the world works
 
-- Theory
-  - Tells us why
-  - May be True or False - but explains why we might see outcomes
+- from **Theory** to **Hypothesis**
+
+<details>
+<summary>Theory</summary>
+An explanation of **why** the things we observe happen, or otherwise *generalizes* what we observe in one situation to another situation. 
+</details>
+
+<details>
+<summary>Hypothesis</summary>
+A *specific* statement about what you will observe in the data. 
+</details>
   
-- Good Question takes us from Theory to Hypothesis
-  - When answered improves ability to explain why
-  - If this is how the world works, what should I expect to observe?
-  - Gives us something new about why
- 
-- Theory -> Research Question or Research Question -> Theory
+- A good test for whether a research question informs theory is to imagine that you find an *unexpected result*, and then *wonder* whether it would make you change your understanding of the world
 
-- Right data for right questions
+## Why Start with a Question?
 
-- Two Checks for Condition for Research Question:
-  1. Could we answer the question?
-  2. Does the question tell us about how the world works?
+- **data mining**: starting with the data and seeking *patterns*
+    - less useful for improving theory
+    - could create false positives
+    - doesn't generalize to abstraction
+
+- precautions
+    - try replication
+    - research design
+
+## Where Do Research Questions Come From?
+
+- theory --> hypothesis --> question
+- data --> opportunity --> question
+
+## How Do You Know if You’ve Got a Good One? 
+
+1. **Potential Results**: If you cant say something interesting from results, Question and Theory not closely linked
+2. **Feasibility**: Possible vs. realistically obtainable data
+3. **Scale**: Consider time and resource constraints
+4. **Design**: Finding a reasonable research design that can answer it
+5. **Simplicity**
+  - *Don't combine* multiple determinants into the question to answer
+  - [Multiple models](https://christophmolnar.com/books/modeling-mindsets) could lead to the same result
   
-- Checks if Research Question Informs Theory:
-  1. Would unexpected result change your understanding of the world?
-  2. If unexpected result doesn't change understanding, then bad question
-  3. If answered, hard to explain away if inconvenient
+## Actionable {-}
 
-## Data Mining vs. Research Q's {-}
-- Section 2.2 p.13 - 16
-- Data Mining is good at finding patterns and making predictions under stability
-- Not good at improving understanding nor improve theory main reason are:
-  1. Answers what's in the data , not explaining why. Correlation != Causation
-  2. Does not deal with abstraction, can see observations but not at developing theory
-  3. Results in false positives - observations found in sample but not outside of it. Random relationships eventually occur when testing everything
-  
-- Can lead to Research Questions
-  - Come to data without a theory, noticed interesting data patterns
-  - Confirm it holds up in other data aka replication of data patterns 
+"To transform vague stakeholder requests into actionable causal projects, work through these four questions together:
+
+1. What is the *endgame* of the project?
+2. What is the **core question** or hypothesis we are addressing?
+3. What *decisions* or actions will be taken based on our insights?
+4. How will we **measure** project success on our end?"
+---Robson Tigre, [Everyday Causal Inference](https://www.everydaycausal.com/planning-your-analysis.html#four-essential-clarifying-questions)
 
 
-## Considerations for a good Research Q {-}
-- Section 2.3 p. 15-16, Section 2.4 p. 16-18
-- Sources of Questions:
-  - Curiosity
-  - Theory
-    - If this is what I expect the world to work, what would I expect to see in the world?
-  - Opportunity
-    - What questions would this data allow me to answer?
- 
-- Research Questions tells us why hypothesis to test
-
-1. Potential Results
-  - If you cant say something interesting from results, Question and Theory not closely linked
-2. Feasibility
-  - Possible vs. Realistically Obtainable Data
-3. Scale
-  - Consider time, resource constraints
-4. Design
-  - Finding a reasonable research design that can answer it
-5. Simplicity
-  - Don't combine multiple determinants into the question to answer
-
-## Discussion/Practicals {-}
-Questions, Discussions, or Examples to fill in during Book Club Meeting
 
 ## Meeting Videos {-}
 
