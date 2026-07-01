@@ -7,55 +7,53 @@
 - Explain why research needs a design
 - Explain importance of a good research question
 
+## Main Goal {-}
 
-## Research Questions {-}
+**How can you do research in such a way that, when you’re done, you have an answer to your research question?**
 
-- Section 1.1, p.3-5
+## I Have a Question
+
 - A question that you plan to answer
 - Contributes to improved understanding "how the world works"
  
-
 1. Well-Defined
 2. Answerable
 3. Understandable
 
  
-## Empirical Research {-}
-- Section 1.2 p.4-5
+## Empirical Research
+
 - Any research that uses structured observations from the real world to attempt to answer questions.
-- Quantitative empirical research uses quantitative measurements (numbers, usually). 
+- Quantitative **empirical research** uses quantitative measurements (numbers, usually). 
 - Observations rather than reason
-- More data sets, fewer interviews.
+- *More data sets, fewer interviews*
 - Measurements hard to to collect precisely or interpret accurately
 - Numbers we have don’t actually answer the research question we have, what can we do?
-- Goal is to collect the right data to answer the question and design reasearch to do this
+- Goal is to collect the right data to answer the question and design research to do this
 
 
-## Why Research needs a design {-}
+## Why Research Needs a Design
 
-- Section 1.3 p.5-7 , 
-- Capable of answering the question it's trying to answer
-- Needed to evaluate first pass analysis and what to do instead
+- **Capable of answering** the question it's trying to answer
+- *Needed to evaluate first pass analysis and what to do instead*
 - Nutrition Research as example of lack of design
   1. Not having research capable to answer question
   2. Not actually answering the question
 - Leads to inconsistent results which people cannot rely on nor use
-- Could lead to too difficult a question to answer, but its still a takeway
+- Could lead to too difficult a question to answer, but its still a takeaway
 
-## Book Goals {-}
+## In This Book
 
 To Improve Confidence in crafting a research project, what kind of data needed, and calculations to perform on data
 
--First Half:
-1. Ways to build an answerable research question
-2. Think of quantitative empirical research to perform to answer question
+- First Half:
+    1. Ways to build an **answerable research question**
+    2. Think of quantitative *empirical research* to perform to answer question
 
--Second Half:
-1. "Toolbox" using observational data
-2. Tools are widely applicable to answer many questions
+- Second Half:
+    1. "Toolbox" using *observational data*
+    2. **Tools** are widely applicable to answer many questions
 
-## Discussion/Practicals {-}
-Questions, Discussions, or Examples to fill in during Book Club Meeting
 
 ## Meeting Videos {-}
 

@@ -13,7 +13,7 @@ description: "This website is the product of the Data Science Learning Community
 
 # Introduction {-}
 
-This is a companion for the book[_The Effect: An Introduction to Research Design and Causality_](https://theeffectbook.net/index.html) by Nick Huntington-Klein (copyright January 5, 2022).
+This is a companion for the book[_The Effect: An Introduction to Research Design and Causality (Second Edition)_](https://theeffectbook.net/index.html) by Nick Huntington-Klein (published July 11, 2025).
 
 -  These are **shared slides!**
    -  Developed by the [Data Science Learning Community](https://dslc.io).
@@ -39,29 +39,50 @@ This is a companion for the book[_The Effect: An Introduction to Research Design
    -  We'll discuss even if presenter unavailable
 -  Meetings = **1 hour.**
 -  **Goal:** 1 chapter/week
+
+
+<!--
 -  Ok to split overwhelming chapters
 -  Ok to combine short chapters
 -  If we need to **slow down** and discuss, **let me know.**
-   -  Most likely someone has the same question 
+   -  Most likely someone has the same question
    -  We are all here to learn 
+-->
 
-## Introductions {-}
+## Icebreaker {-}
 
-If you feel comfortable sharing, unmute or raise your hand!
+If you feel comfortable sharing, in the Zoom chat:
 
--  **Who** are you?
--  **Where** are you joining from?
--  **Previous clubs?** (DSLC or other)
--  **How long** have you been using R?
--  **What** are you most looking forward to learning?
+-  *Who* are you?
+-  *Where* are you joining from?
+-  *Previous clubs?* (DSLC or other)
+-  *How long* have you been using R and/or Python?
+-  *What* are you most looking forward to learning?
 
 ## git and GitHub {-}
 
--  **Git/GitHub** (version control) = **valuable skill.**
-   -  Discussed more in **Chapter 21.**
--  If you present, best to **integrate your materials** into this bookdown version.
+-  **Git/GitHub** (version control) = *valuable skill.*
+-  If you present, best to *integrate your materials* into this bookdown version.
 -  You'll need a **GitHub account** to submit modifications.
--  **Full instructions** in [GitHub repository](https://github.com/r4ds/bookclub-rpkgs) ("repo").
+-  Full instructions in [GitHub repository](https://github.com/r4ds/bookclub-rpkgs) ("repo").
+
+## Book Design {-}
+
+- Part 1: The Design of Research
+    - emphasis on **research design**
+- Part 2: Toolbox
+    - **causal diagram** framework
+- Audiences: data scientists, business analysts, researchers, non-researchers
+
+## Levels of Understanding {-}
+
+1. Attend book club meetings
+2. Watch the author's [video series](https://nickchk.com/theeffectvideos.html)
+3. Present a few meetings
+4. Work through the [reading homework](https://github.com/NickCH-K/TheEffectAssignments)
+5. Work through the [coding homework](https://github.com/NickCH-K/TheEffectAssignments)
+
+<!--
 
 ## Group Question 1 {-}
 
@@ -117,3 +138,5 @@ to
 
 -  INSERT BOOK-SPECIFIC CONTENT STARTING HERE
 -  AND THEN ADD SLIDES FOR CHAPTER 0 IF APPLICABLE
+
+-->
