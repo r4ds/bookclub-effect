@@ -15,5 +15,11 @@ Imports:
     fixest,
     modelsummary,
     tidyverse,
-    gmm
+    gmm,
+    dplyr,
+    ggplot2,
+    gt,
+    infer,
+    janitor,
+    scales
 Encoding: UTF-8
