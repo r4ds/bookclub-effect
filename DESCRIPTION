@@ -6,7 +6,7 @@ Authors@R:
 URL: https://r4ds.github.io/bookclub-effect,
     https://github.com/r4ds/bookclub-effect
 Depends:
-    R (>= 3.1.0)
+    R (>= 4.1.0)
 Imports: 
     bookdown,
     causaldata,
@@ -15,5 +15,11 @@ Imports:
     fixest,
     modelsummary,
     tidyverse,
-    gmm
+    gmm,
+    dplyr,
+    ggplot2,
+    gt,
+    infer,
+    janitor,
+    scales
 Encoding: UTF-8
