@@ -2,26 +2,63 @@
 
 **Learning Objectives:**
 
+- Define data generating processes
+- Clarify which variation in our data answers our research question
+- Explore the identification process
+
+<!--
+
 - What are data generating processes?  
 - What variation in our data answers our research question? How do we find it? 
 - What is the identification process? 
 - Reinforce conceptual understanding of research process through contrived and real-life observational data examples  
+
+-->
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+library("dplyr")
+library("ggplot2")
+library("janitor")
+library("readr")
+library("tidyr")
+
+avocado_raw <- readr::read_csv("data/avocado.csv") |>
+  janitor::clean_names()
+```
+
+<details>
+<summary>Session Info</summary>
+```{r}
+sessionInfo()
+``` 
+</details>
+
   
-## 5.1 The Data Generating Process {-}
+## The Data Generating Process
 
 ### Introduction {-}  
+
+- **Data generating process** (DGP): set of underlying laws that determine how the data we observe in created
+
+  - science: regular laws that govern the way the universe works
+  - physical law: if movement is *determined* by equation, then we *observe* their movement as data
+  - social science: if observed data comes from at least somewhat regular laws, there is a DGP
+
+<!--
   
 - Basic premise of science: underlying laws that govern how the world works 
 - Laws operate regardless of our knowledge about them  
 - We can learn about laws, or data generating processes (DGP), through empirical observation  
 - Laws that govern social processes generally not well-behaved like physical laws  
   
+-->
+
 ### Two Parts of DGPs {-} 
   
-- Part we already know about process through prior assumptions or research  
-- Part we don't know - what we're attempting to learn about through additional research  
+1. Parts we already know about process through prior assumptions or research  
+2. Parts we don't know: what we're attempting to learn about through additional research  
   
-### Contrived DGP Example {-}  
+## Hair Color Example {-}  
 
 Assume following laws:  
   
@@ -34,15 +71,96 @@ Other assumptions (laws):
 - 20% of population have naturally brown hair  
 - 30% of population have college degrees  
 - 40% of folks with neither natural brown hair nor college degrees will dye hair brown    
-  
 
-**Premise 1: No prior knowledge of laws**
+<details>
+<summary>Hair Color Data Generation</summary>
+  
+```{r}
+set.seed(1337)
+N <- 1337
+brown_hair <- sample(c(1,0), N, replace = TRUE, prob = c(0.20, 0.80))
+college <- sample(c(1,0), N, replace = TRUE, prob = c(0.30, 0.70))
+dye_jobs <- brown_hair
+for(i in 1:N){
+  if(brown_hair[i] == 0){
+    if(college[i] == 0){
+      if(runif(1) <= 0.40){
+        dye_jobs[i] <- 1
+      }
+    }
+  }
+}
+brown_hair <- dye_jobs
+log_income <- 0.1*brown_hair + 0.2*college + rnorm(N, 5, 1.5)
+hair_df <- data.frame(brown_hair, college, log_income)
+hair_df$brown_hair <- factor(hair_df$brown_hair)
+hair_df$college    <- factor(hair_df$college)
+
+college_df <- hair_df |> filter(college == 1)
+```
+
+</details>
+
+```{r, echo = FALSE}
+hair_df |>
+  ggplot(aes(x = log_income, 
+             color = brown_hair,
+             group = brown_hair)) +
+  geom_density(aes(linetype = brown_hair),
+               linewidth = 2) +
+  labs(title = "Hair Color Example",
+       subtitle = "Premise 1: No prior knowledge of laws",
+       caption = "Source: The Effect") +
+  theme_minimal()
+```
+
+```{r}
+brown_haired <- hair_df |> filter(brown_hair == 1) |> pull(log_income)
+other_haired <- hair_df |> filter(brown_hair == 0) |> pull(log_income)
+log_treatment <- mean(brown_haired) - mean(other_haired)
+treatment_eff <- exp(log_treatment)
+```
+
+So far, we observe that brown-haired people make `r round(treatment_eff, 2)` as much as people with other hair colors.
+
+- but the stated law was "Brown hair causes a 10% increase to income "
+
+
+<!--
   
 - Let's look at data and try to infer the relationship between brown hair and income:  
 
 ![](images/ch5_identification\5_1_log_income.png)  
   
 - Based on high-level data exploration, it looks like brown hair is associated with 1.6% higher income.
+
+-->
+
+```{r, echo = FALSE}
+college_df |>
+  ggplot(aes(x = log_income, 
+             color = brown_hair,
+             group = brown_hair)) +
+  geom_density(aes(linetype = brown_hair),
+               linewidth = 2) +
+  labs(title = "Hair Color Example",
+       subtitle = "Premise 2: Knowledge of all laws except brown hair/income relationship",
+       caption = "Source: The Effect") +
+  theme_minimal()
+```
+
+```{r}
+brown_haired <- college_df |> filter(brown_hair == 1) |> pull(log_income)
+other_haired <- college_df |> filter(brown_hair == 0) |> pull(log_income)
+log_treatment <- mean(brown_haired) - mean(other_haired)
+treatment_eff <- exp(log_treatment)
+```
+
+So far, we observe that brown-haired people make `r round(treatment_eff, 2)` as much as people with other hair colors.
+
+- but the stated law was "Brown hair causes a 10% increase to income "
+
+<!--
 
 **Premise 2: Knowledge of all laws except brown hair/income relationship**    
   
@@ -54,28 +172,44 @@ Other assumptions (laws):
     
 - Now we see 13% higher income among brown-haired vs. other-colored hair among college students. This is close to the 10% governed by the true DGP  
   
+-->
+  
 ### Two core ideas {-}  
   
 - Variation - How can we find variation we need and focus on it?
 - Identification - How can we use DGP to be sure we're teasing out the right variation?  
 
-## 5.2 Where's Your Variation? {-}  
+## Where's Your Variation?
   
-### Avocado Prices Overview {-}  
-  
-The graph below depicts weekly Avocado sales quantities in California from 1/2015 - 3/2018  
-  
-![](images/ch5_identification\5_2_avocados.png)
-  
-- What can we infer from the above relationship?  
-- What research questions might we produce from this chart?  
-- Can we answer our research questions using the chart?  
-  
+```{r, echo = FALSE}
 
-### Example Answers to Above Questions {-} 
+avocado_df <- avocado_raw  |>
+  filter(region == "California") |>
+  filter(type == "conventional") |>
+  select(date, average_price, total_volume) |>
+  mutate(volume = total_volume / 1e6) |>
+  separate(date, into = c("year", "month", "day"), sep = "-") |>
+  group_by(year, month) |>
+  mutate(agg_price = mean(average_price),
+         agg_volume = mean(volume)) |>
+  ungroup() |>
+  mutate(date_label = paste0(year, "-", month))
+```
 
-#### What can we conclude from the above chart? {-}  
-  
+```{r, echo = FALSE}
+avocado_df |>
+  ggplot(aes(x = average_price, y = volume)) +
+  geom_point() +
+  labs(title = "California Avocado Sales",
+       subtitle = "2015 to 2018, conventional (not 'organic')",
+       caption = "Source: Haas Avocado Board\nhttps://www.kaggle.com/datasets/neuromusic/avocado-prices",
+       x = "Average Price (dollars per avocaodo)",
+       y = "Total Sales Volume (millions)") +
+  theme_minimal()
+```
+
+<details>
+<summary>What can we infer from the above relationship? </summary>
 **Conclude**  
   
 - Negative statistical relationship between avocado prices and quantity sold 
@@ -85,40 +219,81 @@ The graph below depicts weekly Avocado sales quantities in California from 1/201
   
 - Increase in avocado price caused lower sales  
 - How supply and demand interact to influence price
-  
-#### Example research questions {-}  
-  
+</details>
+
+<details>
+<summary>What research questions might we produce from this chart?</summary>
 - What is effect of price increase on avocados demanded?  
 - How does number of avocados brought to market influence price charged?
 - Effect of price on number of avocados brought to market?
 - Temporal effect of quantity demanded from prior week on subsequent week
-  
-#### Can we answer research questions based on data in graph? {-}  
+</details>
 
+<details>
+<summary>Can we answer our research questions using the chart?</summary>
 No  
+</details>
+
+<!--
+
+The graph below depicts weekly Avocado sales quantities in California from 1/2015 - 3/2018  
   
-### DGP and Isolating Variation in Avocados Example {-}  
+![](images/ch5_identification\5_2_avocados.png)
+
+-->  
 
 
-### Broad ideas {-}    
+  
+### DGP and Isolating Variation {-}  
+
 - How can we find variation in data that answers our question?  
 - What is the variation that we want to find? Assume we want to determine effect of price on demand for avocados  
 - Need to have some knowledge about DGP to address these questions
 
 
-#### Avocado DGP {-}
+### Avocado DGP {-}
+
 - Assume avocado suppliers set plan for weekly avocado prices at beginning of each month  
 - Explanations due to suppliers setting prices or quantities only matter between months  
 - Using this information, we can isolate variation due to consumers only.
 
+```{r, echo = FALSE}
+monthly_df <- avocado_df |>
+  select(year, month, agg_price, agg_volume, date_label) |>
+  distinct()
+
+monthly_df |>
+  ggplot(aes(x = agg_price, y = agg_volume, color = month, group = month)) +
+  geom_line(alpha = 0.75, linewidth = 2) +
+  geom_label(aes(x = agg_price, y = agg_volume, label = date_label),
+             data = monthly_df |> filter(month == "11")) +
+  labs(title = "California Monthly Avocado Sales",
+       subtitle = "2015 to 2018, conventional (not 'organic')",
+       caption = "Source: Haas Avocado Board\nhttps://www.kaggle.com/datasets/neuromusic/avocado-prices",
+       x = "Average Price (dollars per avocaodo)",
+       y = "Total Sales Volume (millions)") +
+  theme_minimal()
+```
+
+
+<!--
+
 ![Within Month Avocado Example](images/ch5_identification\5_2_avocados_within.png)
 
+-->
+
   
-## 5.3 Identification {-}
+## Identification
   
-Identification: finding and isolating part of variation that answers research question  
+**Identification**: finding and isolating part of variation that answers research question  
   
+- Research question takes us from theory to hypothesis  
+- Identification takes us from hypothesis to data
+
 ### Example of Family Dog, Rex, Escaping House {-}  
+
+![image source: Dog Fence](images/escaping-dog.png)
+
 - Rex escapes house each night while owners sleep    
   
 - One of the owners, Annie, believes dog is escaping through basement window
@@ -137,42 +312,41 @@ Identification: finding and isolating part of variation that answers research qu
   
 ### Identification Process {-}  
 
-#### Broad overview {-}
-- Research question takes us from theory to hypothesis  
-- Identification takes us from hypothesis to data
-
 #### Identification in Dog Example {-}  
 - Hypothesis: Rex escapes through basement window
 - Testing hypothesis involves removing alternative explanations, and isolating the basement window as the single cause of escape.  
 
-#### Identification in Practice {-}  
+## Identification in Practice {-}  
   
 - Use statistical procedures to remove unwanted sources of variation  
 - Still need theory and assumptions about DGP
 
 Steps to answer research question:  
   
-- Use theory to describe DGP  
-- Use DGP to to find reasons why data appear a certain way that doesn't address research question   
-- Block alternate reasons to isolate variation of interest  
+1. Use theory to describe DGP  
+2. Use DGP to to find reasons why data appear a certain way that doesn't address research question   
+3. Block alternate reasons to isolate variation of interest  
   
 
-## 5.4 Alcohol and Mortality {-}  
+## Alcohol and Mortality
   
 ### Overview {-}  
   
-- Well-regarded study A.M. Wood et al.(2018) studied effects of alcohol on all-causes mortality  
+Well-regarded study A.M. Wood et al.(2018) studied effects of alcohol on all-causes mortality  
+
 - more than 200 authors  
 - 600k people observed  
 - Published in medical journal, The Lancet  
 - Study used to set drinking guidelines  
   
 ### Study Findings {-}  
+
+![hazard ratios](images/ch5_identification/identification-auld-alcohol-1.png)
   
 - No benefit to even small amounts of alcohol consumption 
-- risks increase at about 1 drink per day
+- Risks increase at about 1 drink per day
   
-### Book Exercise {-}    
+### Book Exercises {-}    
   
 - List five things that would be a cause for or related to someone drinking  
 - List five things that would cause someone to die  
@@ -205,7 +379,7 @@ Steps to answer research question:
 ![](images/ch5_identification\5_4_drinking_man.png)
 
   
-## 5.5 Context and Omniscience {-}  
+## Context and Omniscience
   
 > Here the challenges are not primarily technical in the sense of requiring new theorems or estimators. Rather, progress comes from detailed institutional knowledge and the careful investigation and quantification of the forces at work in a particular setting. Of course, such endeavors are not really new. They have always been at the heart of good empirical research - Joshua Angrist and Alan Krueger (2001).
    
