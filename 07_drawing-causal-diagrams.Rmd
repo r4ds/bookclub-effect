@@ -5,6 +5,16 @@
 - Build and refine an extensive causal diagram
 - Discuss assumptions and choices
 
+<details>
+<summary>Session Info</summary>
+
+```{r}
+sessionInfo()
+```
+
+</details>
+
+
 ## Our Idea of the World
 
 **Causal diagrams** represent the data generating process (DGP) that got us our data.

@@ -2,74 +2,351 @@
 
 **Learning objectives:**
 
--   identify paths in DAGs
--   understand the difference between good and bad paths, and front-door vs. back-door paths
--   understand how to Close paths
--   find colliders
--   understand how to use paths to test your DAG
+-   Identify paths in DAGs
+-   Classify paths in DAGs
+-   Start to close paths
+-   Explore colliders
+-   Motivate placebo tests
 
-## Paths
+<details>
+<summary>Session Info</summary>
+
+```{r}
+sessionInfo()
+```
+
+</details>
+
+
+## I Walk the Line
 
 > A path between two variables on a causal diagram is a description of the set of arrows and nodes you visit when “walking” from one variable to another.
 
--   tell us how two variables are related
--   how are B and C related?
-
-![](images/ch8_closing-back-doors/causalpaths-example-1.png)
+![Figure 8.1](images/ch_8/causalpaths-example-1.png)
 
 > The paths can tell us the road we want to walk on, and also the road we want to avoid.
 
-## Finding all paths
+## Any Way You Like It
 
+![Figure 8.2](images/ch_8/example_1a.png)
+
+<details>
+<summary>Finding all paths</summary>
 1.  Start at the treatment variable
 2.  Follow one of the arrows coming in/out of the treatment variable to find another variable
 3.  Follow one of the arrows coming in or out of *that* variable
 4.  Keep repeating step 3 until you either come to a variable you’ve already visited (loop!), or find the outcome variable (path)
 5.  Every time you find a path/loop, back up one and try a different arrow in/out until you’ve tried them all. Then, back up again and try all those arrows
+</details>
 
-Let's practice!
+<details>
+<summary>Solution</summary>
 
-![](images/ch8_closing-back-doors/causalpaths-basiclook-1.png)
+![Example 1 Paths](images/ch_8/example_1.png)
 
-## Solution
+</details>
 
-![](images/ch8_closing-back-doors/solutions_1.png)
+<details>
+<summary>Typst Code</summary>
+
+```
+#import "@preview/autograph:0.1.0": diagram, node, edge
+
+#set page(width: 10in, height: 7.5in)
+#set text(
+  font: "New Computer Modern",
+  size: 14pt
+)
+
+#set align(center)
+= Figure 8.1: Starter Example
+#diagram(bezier: true,
+  node(<Treatment>, fill: red.lighten(50%)),
+  node(<Outcome>, fill: blue.lighten(50%)),
+  node(<A>, fill: purple.lighten(50%)),
+  node(<B>, fill: purple.lighten(50%)),
+  node(<C>, fill: purple.lighten(50%)),
+
+  edge(<Treatment>, <Outcome>, stroke: 5pt, ),
+  edge(<Treatment>, <A>, stroke: 2pt + gray.lighten(50%)),
+  edge(<A>, <Outcome>, stroke: 2pt + gray.lighten(50%)),
+  edge(<B>, <A>, stroke: 2pt + gray.lighten(50%)),
+  edge(<B>, <C>, stroke: 2pt + gray.lighten(50%)),
+  edge(<B>, <Treatment>, stroke: 2pt + gray.lighten(50%)),
+  edge(<C>, <Outcome>, stroke: 2pt + gray.lighten(50%)),
+)
+
+#diagram(bezier: true,
+  node(<Treatment>, fill: red.lighten(50%)),
+  node(<Outcome>, fill: blue.lighten(50%)),
+  node(<A>, fill: purple.lighten(50%)),
+  node(<B>, fill: purple.lighten(50%)),
+  node(<C>, fill: purple.lighten(50%)),
+
+  edge(<Treatment>, <Outcome>, stroke: 2pt + gray.lighten(50%)),
+  edge(<Treatment>, <A>, stroke: 5pt, ),
+  edge(<A>, <Outcome>, stroke: 5pt, ),
+  edge(<B>, <A>, stroke: 2pt + gray.lighten(50%)),
+  edge(<B>, <C>, stroke: 2pt + gray.lighten(50%)),
+  edge(<B>, <Treatment>, stroke: 2pt + gray.lighten(50%)),
+  edge(<C>, <Outcome>, stroke: 2pt + gray.lighten(50%)),
+)
+
+#diagram(bezier: true,
+  node(<Treatment>, fill: red.lighten(50%)),
+  node(<Outcome>, fill: blue.lighten(50%)),
+  node(<A>, fill: purple.lighten(50%)),
+  node(<B>, fill: purple.lighten(50%)),
+  node(<C>, fill: purple.lighten(50%)),
+
+  edge(<Treatment>, <Outcome>, stroke: 2pt + gray.lighten(50%)),
+  edge(<Treatment>, <A>, stroke: 5pt, ),
+  edge(<A>, <Outcome>, stroke: 2pt + gray.lighten(50%)),
+  edge(<B>, <A>, stroke: 5pt, ),
+  edge(<B>, <C>, stroke: 5pt, ),
+  edge(<B>, <Treatment>, stroke: 2pt + gray.lighten(50%)),
+  edge(<C>, <Outcome>, stroke: 5pt, ),
+)
+
+#diagram(bezier: true,
+  node(<Treatment>, fill: red.lighten(50%)),
+  node(<Outcome>, fill: blue.lighten(50%)),
+  node(<A>, fill: purple.lighten(50%)),
+  node(<B>, fill: purple.lighten(50%)),
+  node(<C>, fill: purple.lighten(50%)),
+
+  edge(<Treatment>, <Outcome>, stroke: 2pt + gray.lighten(50%)),
+  edge(<Treatment>, <A>, stroke: 2pt + gray.lighten(50%)),
+  edge(<A>, <Outcome>, stroke: 5pt, ),
+  edge(<B>, <A>, stroke: 5pt, ),
+  edge(<B>, <C>, stroke: 2pt + gray.lighten(50%)),
+  edge(<B>, <Treatment>, stroke: 5pt, ),
+  edge(<C>, <Outcome>, stroke: 2pt + gray.lighten(50%)),
+)
+
+#diagram(bezier: true,
+  node(<Treatment>, fill: red.lighten(50%)),
+  node(<Outcome>, fill: blue.lighten(50%)),
+  node(<A>, fill: purple.lighten(50%)),
+  node(<B>, fill: purple.lighten(50%)),
+  node(<C>, fill: purple.lighten(50%)),
+
+  edge(<Treatment>, <Outcome>, stroke: 2pt + gray.lighten(50%)),
+  edge(<Treatment>, <A>, stroke: 2pt + gray.lighten(50%)),
+  edge(<A>, <Outcome>, stroke: 2pt + gray.lighten(50%)),
+  edge(<B>, <A>, stroke: 2pt + gray.lighten(50%)),
+  edge(<B>, <C>, stroke: 5pt, ),
+  edge(<B>, <Treatment>, stroke: 5pt, ),
+  edge(<C>, <Outcome>, stroke: 5pt, ),
+)
+```
+
+</details>
 
 
-## Let's try another one: Wine and Health
+## Wine and Lifespan Example {-}
 
-![](images/ch8_closing-back-doors/causalpaths-wine-1.png)
+![Figure 8.3](images/ch_8/example_2a.png)
 
 
-## Solution
+<details>
+<summary>Solution</summary>
 
-![](images/ch8_closing-back-doors/solutions_2.png)
+![Example 2 paths](images/ch_8/example_2.png)
+
+</details>
+
+<details>
+<summary>Typst Code</summary>
+
+```
+= Figure 8.3: Wine-Lifespan Example
+#diagram(bezier: true,
+  node(<Wine>, fill: red.lighten(50%)),
+  node(<Lifespan>, fill: blue.lighten(50%)),
+  node(<Drugs>, fill: purple.lighten(50%)),
+  node(<Health>, fill: purple.lighten(50%)),
+  node(<Income>, fill: purple.lighten(50%)),
+  node(<U1>, fill: gray.lighten(50%)),
+  edge(<Wine>, <Lifespan>, stroke: 5pt),
+  
+  edge(<Drugs>, <Lifespan>, stroke: 2pt + gray.lighten(50%)),
+  edge(<Health>, <Lifespan>, stroke: 2pt + gray.lighten(50%)),
+  edge(<Health>, <Wine>, stroke: 2pt + gray.lighten(50%)),
+  edge(<Income>, <Lifespan>, stroke: 2pt + gray.lighten(50%)),
+  edge(<Income>, <Wine>, stroke: 2pt + gray.lighten(50%)),
+  edge(<U1>, <Health>, stroke: 2pt + gray.lighten(50%)),
+  edge(<U1>, <Income>, stroke: 2pt + gray.lighten(50%)),
+  edge(<Wine>, <Drugs>, stroke: 2pt + gray.lighten(50%)),
+)
+
+#diagram(bezier: true,
+  node(<Wine>, fill: red.lighten(50%)),
+  node(<Lifespan>, fill: blue.lighten(50%)),
+  node(<Drugs>, fill: purple.lighten(50%)),
+  node(<Health>, fill: purple.lighten(50%)),
+  node(<Income>, fill: purple.lighten(50%)),
+  node(<U1>, fill: gray.lighten(50%)),
+  edge(<Wine>, <Lifespan>, stroke: 2pt + gray.lighten(50%)),
+  
+  edge(<Drugs>, <Lifespan>, stroke: 5pt),
+  edge(<Health>, <Lifespan>, stroke: 2pt + gray.lighten(50%)),
+  edge(<Health>, <Wine>, stroke: 2pt + gray.lighten(50%)),
+  edge(<Income>, <Lifespan>, stroke: 2pt + gray.lighten(50%)),
+  edge(<Income>, <Wine>, stroke: 2pt + gray.lighten(50%)),
+  edge(<U1>, <Health>, stroke: 2pt + gray.lighten(50%)),
+  edge(<U1>, <Income>, stroke: 2pt + gray.lighten(50%)),
+  edge(<Wine>, <Drugs>, stroke: 5pt),
+)
+
+#diagram(bezier: true,
+  node(<Wine>, fill: red.lighten(50%)),
+  node(<Lifespan>, fill: blue.lighten(50%)),
+  node(<Drugs>, fill: purple.lighten(50%)),
+  node(<Health>, fill: purple.lighten(50%)),
+  node(<Income>, fill: purple.lighten(50%)),
+  node(<U1>, fill: gray.lighten(50%)),
+  edge(<Wine>, <Lifespan>, stroke: 2pt + gray.lighten(50%)),
+  
+  edge(<Drugs>, <Lifespan>, stroke: 2pt + gray.lighten(50%)),
+  edge(<Health>, <Lifespan>, stroke: 2pt + gray.lighten(50%)),
+  edge(<Health>, <Wine>, stroke: 2pt + gray.lighten(50%)),
+  edge(<Income>, <Lifespan>, stroke: 5pt),
+  edge(<Income>, <Wine>, stroke: 5pt),
+  edge(<U1>, <Health>, stroke: 2pt + gray.lighten(50%)),
+  edge(<U1>, <Income>, stroke: 2pt + gray.lighten(50%)),
+  edge(<Wine>, <Drugs>, stroke: 2pt + gray.lighten(50%)),
+)
+
+#diagram(bezier: true,
+  node(<Wine>, fill: red.lighten(50%)),
+  node(<Lifespan>, fill: blue.lighten(50%)),
+  node(<Drugs>, fill: purple.lighten(50%)),
+  node(<Health>, fill: purple.lighten(50%)),
+  node(<Income>, fill: purple.lighten(50%)),
+  node(<U1>, fill: gray.lighten(50%)),
+  edge(<Wine>, <Lifespan>, stroke: 2pt + gray.lighten(50%)),
+  
+  edge(<Drugs>, <Lifespan>, stroke: 2pt + gray.lighten(50%)),
+  edge(<Health>, <Lifespan>, stroke: 5pt),
+  edge(<Health>, <Wine>, stroke: 2pt + gray.lighten(50%)),
+  edge(<Income>, <Lifespan>, stroke: 2pt + gray.lighten(50%)),
+  edge(<Income>, <Wine>, stroke: 5pt),
+  edge(<U1>, <Health>, stroke: 5pt),
+  edge(<U1>, <Income>, stroke: 5pt),
+  edge(<Wine>, <Drugs>, stroke: 2pt + gray.lighten(50%)),
+)
+
+#diagram(bezier: true,
+  node(<Wine>, fill: red.lighten(50%)),
+  node(<Lifespan>, fill: blue.lighten(50%)),
+  node(<Drugs>, fill: purple.lighten(50%)),
+  node(<Health>, fill: purple.lighten(50%)),
+  node(<Income>, fill: purple.lighten(50%)),
+  node(<U1>, fill: gray.lighten(50%)),
+  edge(<Wine>, <Lifespan>, stroke: 2pt + gray.lighten(50%)),
+  
+  edge(<Drugs>, <Lifespan>, stroke: 2pt + gray.lighten(50%)),
+  edge(<Health>, <Lifespan>, stroke: 5pt),
+  edge(<Health>, <Wine>, stroke: 5pt),
+  edge(<Income>, <Lifespan>, stroke: 2pt + gray.lighten(50%)),
+  edge(<Income>, <Wine>, stroke: 2pt + gray.lighten(50%)),
+  edge(<U1>, <Health>, stroke: 2pt + gray.lighten(50%)),
+  edge(<U1>, <Income>, stroke: 2pt + gray.lighten(50%)),
+  edge(<Wine>, <Drugs>, stroke: 2pt + gray.lighten(50%)),
+)
+
+#diagram(bezier: true,
+  node(<Wine>, fill: red.lighten(50%)),
+  node(<Lifespan>, fill: blue.lighten(50%)),
+  node(<Drugs>, fill: purple.lighten(50%)),
+  node(<Health>, fill: purple.lighten(50%)),
+  node(<Income>, fill: purple.lighten(50%)),
+  node(<U1>, fill: gray.lighten(50%)),
+  edge(<Wine>, <Lifespan>, stroke: 2pt + gray.lighten(50%)),
+  
+  edge(<Drugs>, <Lifespan>, stroke: 2pt + gray.lighten(50%)),
+  edge(<Health>, <Lifespan>, stroke: 2pt + gray.lighten(50%)),
+  edge(<Health>, <Wine>, stroke: 5pt),
+  edge(<Income>, <Lifespan>, stroke: 5pt),
+  edge(<Income>, <Wine>, stroke: 2pt + gray.lighten(50%)),
+  edge(<U1>, <Health>, stroke: 5pt),
+  edge(<U1>, <Income>, stroke: 5pt),
+  edge(<Wine>, <Drugs>, stroke: 2pt + gray.lighten(50%)),
+)
+```
+
+</details>
+
 
 ## Path types
 
--   good vs. bad
--   front door vs. back door
--   beware direct vs. indirect effects
+- **Front door path**: all the arrows point away from Treatment
 
-> Good Paths are the reasons why the treatment and outcome variables are related that you think should “count” for your research question. Bad paths are the paths that shouldn’t count, in other words the alternate explanations.
+<details>
+<summary>Front Door Paths</summary>
 
-> Paths where all the arrows face away from Treatment are also known as front door paths. The rest would then be “back door paths.”
+![front door paths](images/ch_8/front_door_paths.png)
+
+</details>
+
+- **Back door path**: at least one arrow pointing back toward Treatment
+
+<details>
+<summary>Back Door Paths</summary>
+
+![back door paths](images/ch_8/back_door_paths.png)
+
+</details>
+
+* **Good path**: describes a reason why treatment and outcome are related that *answers your research question*
+
+<details>
+<summary>Good Paths</summary>
+
+If the research question is "Does `Wine` cause `Lifespan`?",
+
+![front door paths](images/ch_8/example_2.png)
+
+</details>
+
+* **Bad path**: describes a reason why treatment and outcome are related 
+
+  * unrelated to your research question
+  * alternative explanation of the data
+
+<details>
+<summary>Bad Paths</summary>
+
+If the research question is "*Other than how often it might affect drug-taking, does `Wine` cause `Lifespan`?",
+
+![bad path](images/ch_8/bad_path_example.png)
+
+</details>
+
+> The key to identifying the answer to our research question, then, is to find a way to dig just the Good Paths out of the data without getting distracted by the Bad ones.
+
 
 ## Closing paths
 
-> A path is Open if all of the variables along that paths are allowed to vary.
+> A path is **Open** if all of the variables along that path have variation in the data
 
-So we close a patch by
+So we **close** a patch by
 
--   picking a specific data set (e.g., no drug users)
--   adding a variable on the path as control variable
--   matching
+-   Picking a specific data set (e.g., no drug users)
+-   Adding a variable on the path as control variable (ch 13)
+-   Matching (ch 14)
 
-So if we want to get the effect of *Wine* on *Lifespan*, which variables do we have to control for?
+> If we can control for at least one variable on each of our Bad Paths without controlling for anything on one of our Good Paths, we have identified the answer to our research question.
 
-![](images/ch8_closing-back-doors/causalpaths-wine-1.png)
+![controlling for income](images/ch_8/example_4.png)
+
+![controlling for income and health](images/ch_8/example_5.png)
+
 
 ## Colliders
+
+$$\text{Treatment} \leftarrow A \rightarrow B \leftarrow C \rightarrow \text{Outcome}$$
 
 > A variable is a collider on a particular path if, on that path, both arrows point at it.
 
@@ -80,21 +357,51 @@ So if we want to get the effect of *Wine* on *Lifespan*, which variables do we h
 
 We can avoid colliders by
 
--   not controlling for them
--   not choosing a sample where the collider is automatically controlled for
+-   Not controlling for them
+-   Not choosing a sample where the collider is automatically controlled for
 
-## Using paths to test the DAG
+
+## Using Paths to Test the DAG
+
+How do we check to see if our DAG is large enough?
+
+* **Placebo test**: finding a relationship that your causal diagram says should be zero, and checking whether it's actually zero.
+
+<details>
+<summary>Placebo Test Procedure</summary>
+
+Beyond the treatment and outcome, choose two nodes A and B
 
 1.    List all of the paths between A and B. 
-1.    Consider only the open paths.
-1.    Do what you need to do to make sure they’re all Closed.
-1.    If A and B are still related to each other (placebo test), that means there must be some other path you didn’t account for.
+2.    Do what you need to do to make sure they’re all Closed.
+3.    If A and B are still related to each other (by observational data), that means there must be some other path you didn’t account for.
 
-Interpretation of placebo tests:
+</details>
 
--   We have a model, so not accounting for all effects is okay.
--   small but nonzero relationship: fine
--   enormous and super-strong relationship: 😱
+
+## Placebo Test Example {-}
+
+* Research Question: "Does `Wine` cause `Lifespan`?"
+* Placebo Test: "Are `Drugs` and `Income` related?"
+
+![open and closed paths](images/ch_8/example_6.png)
+
+* 8/10 paths are closed because `Lifespan` is a collider
+
+![What if we control for Wine?](images/ch_8/example_6_open.png)
+
+* But `Wine` seems necessary for the relationship between `Income` and `Drugs` (but `Wine` is a subset of `Drugs`)
+* After controlling for `Wine`, there are no more Open paths (but the data would probably suggest a relationship)
+
+
+## Interpretation of Placebo Tests {-}
+
+- We have a model, so not accounting for all effects is okay.
+- Failing a placebo test:
+
+    -   Small but nonzero relationship: okay
+    -   Enormous and super-strong relationship: remake DAG
+
 
 ## Meeting Videos {.unnumbered}
 
