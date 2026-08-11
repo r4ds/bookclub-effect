@@ -2,12 +2,145 @@
 
 **Learning objectives:**
 
-- THESE ARE NICE TO HAVE BUT NOT ABSOLUTELY NECESSARY
+- Motivate RCTs
+- Explore natural experiments
 
-## SLIDE 1 {-}
 
-- ADD SLIDES AS SECTIONS (`##`).
-- TRY TO KEEP THEM RELATIVELY SLIDE-LIKE; THESE ARE NOTES, NOT THE BOOK ITSELF.
+<details>
+<summary>Session Info</summary>
+
+```{r}
+sessionInfo()
+```
+
+</details>
+
+
+## Looking Ahead
+
+> Answer your research question by closing all back doors
+
+<details>
+<summary>Previously</summary>
+
+* Model the data generating process (DGP)
+* List out all of the paths
+* Find variables that close back door paths
+    
+    * Measure and control for all of these variables
+
+</details>
+
+> Alternative approach: isolating just front door paths
+
+
+## Trying to Push a String
+
+* *Partition the variation*
+* **Randomized controlled experiment** (RCT) assigns treatment in a random way
+
+    * Sometimes was called the 'gold standard' of causal research designs
+    * Variation from back doors should be unrelated to research question
+    
+
+## Charter School Example {-}
+
+Do charter schools improve students' test scores?
+
+$$\text{Charter} \rightarrow \text{StudentAchievement}$$
+
+with many possible moderator variables.
+
+$$\text{LotteryWin} \rightarrow \text{Charter} \rightarrow \text{StudentAchievement}$$
+
+* Focus only on the students who were in the lottery
+* Only use data from the experiment
+
+
+## What the World Can Do For Us
+
+**Natural experiment**: randomization of treatment occurs without a researcher controlling the randomization
+
+Any path from the **source of exogenous variation** to the `outcome` must be [either]
+
+    * closed
+    * contain our `treatment`
+
+Natural experiments (unlike pure randomization):
+
+* Sometimes back doors from `NaturalRandomness` to `Outcome`
+* Participants might not know that they are part of the experiment
+* Later: carefully define variation from `Natural Randomness` (ch 10)
+* Harder to get approval from critics
+
+
+## Lottery-Bankruptcy Example
+
+Hankins, Hoekstra, Skiba (2011)
+
+$$\text{Lottery} \rightarrow \text{Bankruptcy}$$
+
+* Only people who have won some money
+
+    * Removes variation in lotto participants
+    
+* Data seemed to show temporal effects
+
+    * Controlled for temporal effects
+    
+## Air Pollution Example {-}
+
+He and Xu (2019)
+
+$$\text{AirPollution} \rightarrow \text{DriveMore}$$
+
+* Exogenous source: `WindDirection`
+
+$$\text{Airpollution} \leftarrow U_{1} \rightarrow \text{Weather}$$
+
+* Controlled for `Season` and `Weather`
+
+
+## Medicare Example {-}
+
+Camilleri and Diebold (2019)
+
+$$\text{UncompensatedCare} \rightarrow \text{PatientExperience}$$
+
+* Exogenous source: `MedicareExpansion`
+
+$$\text{MedicareExpansion} \rightarrow \text{UncompensatedCare} \rightarrow \text{PatientExperience}$$
+
+* But adoption of `MedicaidExpansion` by US states was not random
+
+    * Also several paths to `PatientExperience`
+
+* Controlled for state and local characteristics
+
+    * Study works when working only with hospital compensation
+
+
+## Riding a Shooting Star
+
+**Front Door Method**: when a back-door path has a variable that cannot be measured
+
+* Measure both
+
+$$\text{Treatment} \rightarrow M \text{ and } M \rightarrow \text{Outcome}$$
+
+* Can then measure
+
+$$\text{Treatment} \rightarrow M \rightarrow \text{Outcome}$$
+
+* But $M$ cannot be related to other DAG variables
+
+
+
+
+
+
+
+
 
 ## Meeting Videos {-}
 
