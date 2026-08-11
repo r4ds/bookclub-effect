@@ -2,12 +2,79 @@
 
 **Learning objectives:**
 
-- THESE ARE NICE TO HAVE BUT NOT ABSOLUTELY NECESSARY
+- Define effect size metrics
+- Discuss workflows
 
-## SLIDE 1 {-}
 
-- ADD SLIDES AS SECTIONS (`##`).
-- TRY TO KEEP THEM RELATIVELY SLIDE-LIKE; THESE ARE NOTES, NOT THE BOOK ITSELF.
+<details>
+<summary>Session Info</summary>
+
+```{r}
+sessionInfo()
+```
+
+</details>
+
+
+## For Whom the Effect Holds
+
+**Heterogenous treatment effort** on an outcome for which the effect itself varies across the population.
+
+* Sample set, but hoping for **external validity**
+* Perhaps make a *distribution of effects*
+* Focus on *identification*
+
+
+## Different Averages
+
+<details>
+<summary>ATE</summary>
+
+**Average Treatment Effect**
+
+* If we impose treatment on everyone
+* Usually what we want to estimate
+
+</details>
+
+<details>
+<summary>CATE</summary>
+
+**Conditional Average Treatment Effect**
+
+* If subsetting the groups
+* Doesn't generalize to everyone
+
+</details>
+
+<details>
+<summary>ATT</summary>
+
+**Average Treatment on the Treated**
+
+</details>
+
+<details>
+<summary>ATUT</summary>
+
+**Average Treatment on the Untreated**
+
+</details>
+
+* Marginal treatment effect
+* Weighted average treatment effect
+* **Variance-weighted average treatment effect**
+
+
+
+
+
+
+
+
+
+
+
 
 ## Meeting Videos {-}
 
