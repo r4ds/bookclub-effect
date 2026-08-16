@@ -61,19 +61,53 @@ sessionInfo()
 
 </details>
 
-* Marginal treatment effect
-* Weighted average treatment effect
-* **Variance-weighted average treatment effect**
+<details>
+<summary>Marginal treatment effect</summary>
+
+The treatment effect of the next individual that would be treated if treatment were expanded.
+
+</details>
+
+<details>
+<summary>Weighted average treatment effect</summary>
+
+A treatment effect average where each individual’s treatment effect is weighted differently.
+
+</details>
+
+<details>
+<summary>Variance-weighted average treatment effect</summary>
+
+A treatment effect average where each individual’s treatment effect is weighted based on how much variation there is in their treatment variable, after closing back doors.
+
+</details>
 
 
+## I Just Want an ATE
+
+> Which treatment variation do we allow to count
+
+Rules of Thumb (do not apply 100 percent of the time)
+
+1. True randomization $\rightarrow$ ATE
+2. Randomization in a group $\rightarrow$ CATE
+3. Closed back doors $\rightarrow$ weighted average treatment effect
+4. Assuming treatment on untreated $\rightarrow$ ATT
+5. Isolate exogenous variable $\rightarrow$ LATE
+
+(Słoczyński, 2022)
+
+* Comparing treated to *counterfactual* outcomes
+
+    * More treated people, more represents ATUT
 
 
+## Who Cares?
 
+> We want to know what will happen if we intervene
 
-
-
-
-
+* Understanding not just the overall effect
+* Who that effect is for
 
 
 ## Meeting Videos {-}
